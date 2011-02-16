@@ -26,12 +26,20 @@ the name of a command in the user's C<PATH> environment.
 
 =head2 gather_files
 
+Adds a F<t/requires_external.t> test script to the distribution that checks
+if each L</requires> item is executable.
 Required by
 L<Dist::Zilla::Role::FileGatherer|Dist::Zilla::Role::FileGatherer>.
 
+=head2 metadata
+
+Using this plugin will add the L<Env::Path|Env::Path> to your distribution's
+testing prerequisites, since it uses that module to look for executables in
+the user's C<PATH>.
+
 =encoding utf8
 
-=for Pod::Coverage     mvp_multivalue_args
+=for Pod::Coverage mvp_multivalue_args
 
 =for test_synopsis 1;
 
