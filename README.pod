@@ -8,6 +8,8 @@ Dist::Zilla::Plugin::RequiresExternal - make dists require external commands
 
 version 0.110470
 
+=encoding utf8
+
 =head1 AUTHOR
 
 Mark Gardner <mjgardner@cpan.org>
