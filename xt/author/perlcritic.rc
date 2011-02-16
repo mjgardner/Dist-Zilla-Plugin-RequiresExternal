@@ -1,6 +1,6 @@
 severity = brutal
 verbose = 8
-exclude = Compatibility::PodMinimumVersion Editor::RequireEmacsFileVariables Miscellanea::RequireRcsKeywords Modules::RequireExplicitPackage Modules::RequirePerlVersion
+exclude = Compatibility::PodMinimumVersion Editor::RequireEmacsFileVariables Miscellanea::RequireRcsKeywords Modules::RequireExplicitInclusion Modules::RequireExplicitPackage Modules::RequirePerlVersion
 
 [Lax::RequireExplicitPackage::ExceptForPragmata]
 allowed_pragmata = diagnostics feature perlversion strict warnings utf8
@@ -10,14 +10,14 @@ allowed_pragmata = diagnostics feature perlversion strict warnings utf8
 above_version = 5.010
 
 [Documentation::PodSpelling]
-stop_words = dists
+stop_words = dists plugin
 
 [Documentation::RequirePodSections]
 lib_sections    = NAME | VERSION | DESCRIPTION | SYNOPSIS | COPYRIGHT AND LICENSE
 script_sections = NAME | USAGE | OPTIONS | EXIT STATUS | COPYRIGHT AND LICENSE
 
-#[Subroutines::ProhibitCallsToUndeclaredSubs]
-#exempt_subs = Carp::croak Moose::Role::has Moose::Role::with Moose::around Moose::extends Moose::has Moose::with MooseX::Has::Sugar::coerce MooseX::Has::Sugar::lazy MooseX::Has::Sugar::lazy_build MooseX::Has::Sugar::required MooseX::Has::Sugar::ro MooseX::Has::Sugar::rw MooseX::Types::as MooseX::Types::class_type MooseX::Types::enum MooseX::Types::message MooseX::Types::subtype MooseX::Types::where Path::Class::dir Path::Class::file Readonly::Readonly TryCatch::catch TryCatch::try TryCatch::where
+[Subroutines::ProhibitCallsToUndeclaredSubs]
+exempt_subs = Moose::has Moose::with MooseX::Has::Sugar::auto_deref MooseX::Has::Sugar::lazy MooseX::Has::Sugar::ro
 
 [TestingAndDebugging::RequireUseStrict]
 equivalent_modules = Modern::Perl

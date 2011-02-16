@@ -8,7 +8,40 @@ Dist::Zilla::Plugin::RequiresExternal - make dists require external commands
 
 version 0.110470
 
+=head1 SYNOPSIS
+
+=head1 DESCRIPTION
+
+This L<Dist::Zilla|Dist::Zilla> plugin creates a test in your distribution
+to check for the existence of executable commands you require.
+
+=head1 ATTRIBUTES
+
+=head2 requires
+
+Each C<requires> attribute should be either a full path to an executable or
+the name of a command in the user's C<PATH> environment.
+
+=head1 METHODS
+
+=head2 gather_files
+
+Required by
+L<Dist::Zilla::Role::FileGatherer|Dist::Zilla::Role::FileGatherer>.
+
 =encoding utf8
+
+=for Pod::Coverage     mvp_multivalue_args
+
+=for test_synopsis 1;
+
+=for test_synopsis __END__
+
+In your F<dist.ini>:
+
+    [RequiresExternal]
+    requires = /path/to/some/executable
+    requires = executable_in_path
 
 =head1 AUTHOR
 
