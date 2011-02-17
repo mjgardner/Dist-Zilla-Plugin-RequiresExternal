@@ -87,10 +87,6 @@ to check for the existence of executable commands you require.
 
 =head1 SYNOPSIS
 
-=for test_synopsis 1;
-
-=for test_synopsis __END__
-
 In your F<dist.ini>:
 
     [RequiresExternal]

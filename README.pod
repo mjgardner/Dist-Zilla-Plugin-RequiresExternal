@@ -6,9 +6,15 @@ Dist::Zilla::Plugin::RequiresExternal - make dists require external commands
 
 =head1 VERSION
 
-version 0.001071
+version 0.001075
 
 =head1 SYNOPSIS
+
+In your F<dist.ini>:
+
+    [RequiresExternal]
+    requires = /path/to/some/executable
+    requires = executable_in_path
 
 =head1 DESCRIPTION
 
@@ -40,16 +46,6 @@ the user's C<PATH>.
 =encoding utf8
 
 =for Pod::Coverage mvp_multivalue_args
-
-=for test_synopsis 1;
-
-=for test_synopsis __END__
-
-In your F<dist.ini>:
-
-    [RequiresExternal]
-    requires = /path/to/some/executable
-    requires = executable_in_path
 
 =head1 AUTHOR
 
