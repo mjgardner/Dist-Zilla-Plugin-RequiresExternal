@@ -21,8 +21,23 @@ with qw(
 
 =attr requires
 
-Each C<requires> attribute should be either a full path to an executable or
-the name of a command in the user's C<PATH> environment.
+Each C<requires> attribute should be either an absolute path to an executable
+or the name of a command in the user's C<PATH> environment.
+
+Example values:
+
+=over
+
+=item F</usr/bin/java>
+
+Will require the program C<java> in F</usr/bin>
+
+=item C<sqlplus>
+
+Will require the program C<sqlplus> to be available somewhere in the user's
+C<PATH>.
+
+=back
 
 =cut
 
@@ -36,10 +51,8 @@ has _requires => ( ro, lazy, auto_deref,
 
 =method gather_files
 
-Adds a F<t/requires_external.t> test script to the distribution that checks
+Adds a F<t/requires_external.t> test script to your distribution that checks
 if each L</requires> item is executable.
-Required by
-L<Dist::Zilla::Role::FileGatherer|Dist::Zilla::Role::FileGatherer>.
 
 =cut
 
@@ -66,9 +79,9 @@ END_TEMPLATE
 
 =method metadata
 
-Using this plugin will add the L<Env::Path|Env::Path> to your distribution's
-testing prerequisites, since it uses that module to look for executables in
-the user's C<PATH>.
+Using this plugin will add L<Env::Path|Env::Path> to your distribution's
+testing prerequisites since the F<t/requires_external.t> script uses that
+module to look for executables in the user's C<PATH>.
 
 =cut
 
@@ -92,3 +105,9 @@ In your F<dist.ini>:
     [RequiresExternal]
     requires = /path/to/some/executable
     requires = executable_in_path
+
+=head1 SEE ALSO
+
+This module was indirectly inspired by
+L<Module::Install::External's requires_external_bin|Module::Install::External/requires_external_bin>
+command.
