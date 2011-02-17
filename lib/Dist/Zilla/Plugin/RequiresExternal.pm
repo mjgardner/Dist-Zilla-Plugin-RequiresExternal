@@ -22,22 +22,17 @@ with qw(
 =attr requires
 
 Each C<requires> attribute should be either an absolute path to an executable
-or the name of a command in the user's C<PATH> environment.
+or the name of a command in the user's C<PATH> environment.  Multiple
+C<requires> lines are allowed.
 
-Example values:
+Example from a F<dist.ini> file:
 
-=over
+    [RequiresExternal]
+    requires = sqlplus
+    requires = /usr/bin/java
 
-=item F</usr/bin/java>
-
-Will require the program C<java> in F</usr/bin>
-
-=item C<sqlplus>
-
-Will require the program C<sqlplus> to be available somewhere in the user's
-C<PATH>.
-
-=back
+This will require the program C<sqlplus> to be available somewhere in the
+user's C<PATH> and the program C<java> specifically in F</usr/bin>.
 
 =cut
 
