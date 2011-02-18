@@ -6,7 +6,7 @@ Dist::Zilla::Plugin::RequiresExternal - make dists require external commands
 
 =head1 VERSION
 
-version 0.1091005001
+version 0.1091005002
 
 =head1 SYNOPSIS
 
