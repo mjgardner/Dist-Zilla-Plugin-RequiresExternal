@@ -1,6 +1,4 @@
 {{$NEXT}}
-
-0.1091005002 2011-02-18 13:29:13 America/New_York
     New "fatal" attribute to make all tests fail if requires_external fails
 0.1091005 2011-02-17 00:41:15 America/New_York
     Better documentation and examples
