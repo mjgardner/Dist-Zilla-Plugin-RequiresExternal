@@ -4,7 +4,7 @@ package Dist::Zilla::Plugin::RequiresExternal;
 
 use English '-no_match_vars';
 use Moose;
-use MooseX::Types::Moose qw(ArrayRef Str);
+use MooseX::Types::Moose qw(ArrayRef Bool Str);
 use MooseX::Has::Sugar;
 use Dist::Zilla::File::InMemory;
 use List::MoreUtils 'part';
@@ -44,6 +44,17 @@ has _requires => ( ro, lazy, auto_deref,
     default  => sub { [] },
 );
 
+=attr fatal
+
+Boolean value to determine if a failed test will immediately stop testing.
+It also causes the test name to change to <t/000-requires_external.t> so that
+it runs earlier.
+Defaults to false.
+
+=cut
+
+has fatal => ( ro, required, isa => Bool, default => 0 );
+
 =method gather_files
 
 Adds a F<t/requires_external.t> test script to your distribution that checks
@@ -52,36 +63,60 @@ if each L</requires> item is executable.
 =cut
 
 sub gather_files {
-    my $self = shift;
+    my $self     = shift;
     my @requires = part { file($ARG)->is_absolute() } $self->_requires;
+    my $template = <<'END_TEMPLATE';
+#!perl
+
+use Test::Most;
+plan tests => {{
+    $OUT = 0;
+    $OUT += @{ $requires[0] } if defined $requires[0];
+    $OUT += @{ $requires[1] } if defined $requires[1];
+}};
+bail_on_fail if {{ $fatal }};
+use Env::Path 'PATH';
+
+{{ "ok(scalar PATH->Whence(\$_), \"\$_ in PATH\") for qw(@{ $requires[0] });"
+        if defined $requires[0]; }}
+{{ "ok(-x \$_, \"\$_ is executable\") for qw(@{ $requires[1] });"
+        if defined $requires[1]; }}
+END_TEMPLATE
 
     $self->add_file(
         Dist::Zilla::File::InMemory->new(
-            name    => 't/requires_external.t',
+            name => (
+                $self->fatal
+                ? 't/000-requires_external.t'
+                : 't/requires_external.t'
+            ),
             content => $self->fill_in_string(
-                <<'END_TEMPLATE', { requires => \@requires } ) ) );
-#!perl
-
-use Env::Path 'PATH';
-use Test::More tests => {{ @{ $requires[0] } + @{ $requires[1] } }};
-
-ok(scalar PATH->Whence($_), "$_ in PATH") for qw( {{ "@{ $requires[0] }" }} );
-ok(-x $_, "$_ is executable")             for qw( {{ "@{ $requires[1] }" }} );
-
-END_TEMPLATE
+                $template, { fatal => $self->fatal, requires => \@requires },
+            )
+        )
+    );
     return;
 }
 
 =method metadata
 
-Using this plugin will add L<Env::Path|Env::Path> to your distribution's
-testing prerequisites since the F<t/requires_external.t> script uses that
-module to look for executables in the user's C<PATH>.
+Using this plugin will add L<Test::Most|Test::Most> and L<Env::Path|Env::Path>
+to your distribution's testing prerequisites since the generated script uses
+those modules.
 
 =cut
 
 sub metadata {
-    return { prereqs => { test => { requires => { 'Env::Path' => '0' } } } };
+    return {
+        prereqs => {
+            test => {
+                requires => {
+                    'Test::Most' => '0',
+                    'Env::Path'  => '0',
+                },
+            },
+        },
+    };
 }
 
 __PACKAGE__->meta->make_immutable();

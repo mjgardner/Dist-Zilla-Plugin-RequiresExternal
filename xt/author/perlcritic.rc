@@ -17,7 +17,7 @@ lib_sections    = NAME | VERSION | DESCRIPTION | SYNOPSIS | COPYRIGHT AND LICENS
 script_sections = NAME | USAGE | OPTIONS | EXIT STATUS | COPYRIGHT AND LICENSE
 
 [Subroutines::ProhibitCallsToUndeclaredSubs]
-exempt_subs = Moose::has Moose::with MooseX::Has::Sugar::auto_deref MooseX::Has::Sugar::lazy MooseX::Has::Sugar::ro Path::Class::file
+exempt_subs = Moose::has Moose::with MooseX::Has::Sugar::auto_deref MooseX::Has::Sugar::lazy MooseX::Has::Sugar::required MooseX::Has::Sugar::ro Path::Class::file
 
 [TestingAndDebugging::RequireUseStrict]
 equivalent_modules = Modern::Perl
