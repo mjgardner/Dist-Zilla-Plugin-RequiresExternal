@@ -47,7 +47,7 @@ has _requires => ( ro, lazy, auto_deref,
 =attr fatal
 
 Boolean value to determine if a failed test will immediately stop testing.
-It also causes the test name to change to <t/000-requires_external.t> so that
+It also causes the test name to change to F<t/000-requires_external.t> so that
 it runs earlier.
 Defaults to false.
 
