@@ -15,9 +15,7 @@ use warnings;
 
 use Test::More;
 
-
-
-    use File::Find;
+use File::Find;
 use File::Temp qw{ tempdir };
 
 my @modules;
@@ -28,7 +26,9 @@ find(
         $found =~ s{^lib/}{};
         $found =~ s{[/\\]}{::}g;
         $found =~ s/\.pm$//;
-        # nothing to skip push @modules, $found;
+
+        # nothing to skip
+        push @modules, $found;
     },
     'lib',
 );
@@ -39,7 +39,9 @@ if ( -d 'bin' ) {
         sub {
             return unless -f;
             my $found = $File::Find::name;
-            # nothing to skip push @scripts, $found;
+
+            # nothing to skip
+            push @scripts, $found;
         },
         'bin',
     );
