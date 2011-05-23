@@ -1,6 +1,6 @@
 severity = brutal
 verbose = 8
-exclude = Editor::RequireEmacsFileVariables Miscellanea::RequireRcsKeywords Modules::RequireExplicitInclusion Modules::RequireExplicitPackage Tics::ProhibitLongLines
+exclude = Modules::RequirePerlVersion Editor::RequireEmacsFileVariables Miscellanea::RequireRcsKeywords Modules::RequireExplicitInclusion Modules::RequireExplicitPackage Tics::ProhibitLongLines
 
 [Lax::RequireExplicitPackage::ExceptForPragmata]
 allowed_pragmata = diagnostics feature perlversion strict warnings utf8
@@ -8,9 +8,11 @@ allowed_pragmata = diagnostics feature perlversion strict warnings utf8
 # since we're using Modern::Perl
 [Compatibility::PerlMinimumVersionAndWhy]
 above_version = 5.010
+[Compatibility::PodMinimumVersion]
+above_version = 5.010
 
 [Documentation::PodSpelling]
-stop_words = dists executables metadata plugin
+stop_words = Perldoc perldoc annonations PASSed dists executables metadata plugin
 
 [Documentation::RequirePodSections]
 lib_sections    = NAME | VERSION | DESCRIPTION | SYNOPSIS | COPYRIGHT AND LICENSE
