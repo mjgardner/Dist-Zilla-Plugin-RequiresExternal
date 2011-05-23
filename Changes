@@ -1,5 +1,5 @@
-1.001     2011-05-23 12:02:59 America/New_York
-
+1.001     2011-05-23 12:20:52 America/New_York
+    Update POD and copyright.  No code changes.
 1.000     2011-02-18 13:39:38 America/New_York
     New "fatal" attribute to make all tests fail if requires_external fails
 0.1091005 2011-02-17 00:41:15 America/New_York
