@@ -13,6 +13,7 @@ t/00-compile.t
 t/000-report-versions.t
 t/author-critic.t
 t/fatal.t
+t/release-consistent-version.t
 t/release-cpan-changes.t
 t/release-dist-manifest.t
 t/release-distmeta.t
@@ -26,7 +27,6 @@ t/release-pod-coverage.t
 t/release-pod-linkcheck.t
 t/release-pod-syntax.t
 t/release-portability.t
-t/release-synopsis.t
 t/release-unused-vars.t
 t/test.t
 weaver.ini
