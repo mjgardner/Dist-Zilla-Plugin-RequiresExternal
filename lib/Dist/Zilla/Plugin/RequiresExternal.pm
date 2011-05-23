@@ -1,4 +1,19 @@
+#
+# This file is part of Dist-Zilla-Plugin-RequiresExternal
+#
+# This software is copyright (c) 2011 by GSI Commerce.
+#
+# This is free software; you can redistribute it and/or modify it under
+# the same terms as the Perl 5 programming language system itself.
+#
+use utf8;
+use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
+
 package Dist::Zilla::Plugin::RequiresExternal;
+
+BEGIN {
+    $Dist::Zilla::Plugin::RequiresExternal::VERSION = '1.001';
+}
 
 # ABSTRACT: make dists require external commands
 
@@ -17,25 +32,6 @@ with qw(
     Dist::Zilla::Role::TextTemplate
 );
 
-=for Pod::Coverage mvp_multivalue_args
-
-=attr requires
-
-Each C<requires> attribute should be either an absolute path to an executable
-or the name of a command in the user's C<PATH> environment.  Multiple
-C<requires> lines are allowed.
-
-Example from a F<dist.ini> file:
-
-    [RequiresExternal]
-    requires = sqlplus
-    requires = /usr/bin/java
-
-This will require the program C<sqlplus> to be available somewhere in the
-user's C<PATH> and the program C<java> specifically in F</usr/bin>.
-
-=cut
-
 sub mvp_multivalue_args { return 'requires' }
 
 has _requires => ( ro, lazy, auto_deref,
@@ -44,23 +40,7 @@ has _requires => ( ro, lazy, auto_deref,
     default  => sub { [] },
 );
 
-=attr fatal
-
-Boolean value to determine if a failed test will immediately stop testing.
-It also causes the test name to change to F<t/000-requires_external.t> so that
-it runs earlier.
-Defaults to false.
-
-=cut
-
 has fatal => ( ro, required, isa => Bool, default => 0 );
-
-=method gather_files
-
-Adds a F<t/requires_external.t> test script to your distribution that checks
-if each L</requires> item is executable.
-
-=cut
 
 sub gather_files {
     my $self     = shift;
@@ -98,14 +78,6 @@ END_TEMPLATE
     return;
 }
 
-=method metadata
-
-Using this plugin will add L<Test::Most|Test::Most> and L<Env::Path|Env::Path>
-to your distribution's testing prerequisites since the generated script uses
-those modules.
-
-=cut
-
 sub metadata {
     return {
         prereqs => {
@@ -123,10 +95,22 @@ __PACKAGE__->meta->make_immutable();
 no Moose;
 1;
 
-=head1 DESCRIPTION
+__END__
 
-This L<Dist::Zilla|Dist::Zilla> plugin creates a test in your distribution
-to check for the existence of executable commands you require.
+=pod
+
+=for :stopwords Mark Gardner GSI Commerce cpan testmatrix url annocpan anno bugtracker rt
+cpants kwalitee diff irc mailto metadata placeholders
+
+=encoding utf8
+
+=head1 NAME
+
+Dist::Zilla::Plugin::RequiresExternal - make dists require external commands
+
+=head1 VERSION
+
+version 1.001
 
 =head1 SYNOPSIS
 
@@ -136,8 +120,154 @@ In your F<dist.ini>:
     requires = /path/to/some/executable
     requires = executable_in_path
 
+=head1 DESCRIPTION
+
+This L<Dist::Zilla|Dist::Zilla> plugin creates a test in your distribution
+to check for the existence of executable commands you require.
+
+=head1 ATTRIBUTES
+
+=head2 requires
+
+Each C<requires> attribute should be either an absolute path to an executable
+or the name of a command in the user's C<PATH> environment.  Multiple
+C<requires> lines are allowed.
+
+Example from a F<dist.ini> file:
+
+    [RequiresExternal]
+    requires = sqlplus
+    requires = /usr/bin/java
+
+This will require the program C<sqlplus> to be available somewhere in the
+user's C<PATH> and the program C<java> specifically in F</usr/bin>.
+
+=head2 fatal
+
+Boolean value to determine if a failed test will immediately stop testing.
+It also causes the test name to change to F<t/000-requires_external.t> so that
+it runs earlier.
+Defaults to false.
+
+=head1 METHODS
+
+=head2 gather_files
+
+Adds a F<t/requires_external.t> test script to your distribution that checks
+if each L</requires> item is executable.
+
+=head2 metadata
+
+Using this plugin will add L<Test::Most|Test::Most> and L<Env::Path|Env::Path>
+to your distribution's testing prerequisites since the generated script uses
+those modules.
+
+=for Pod::Coverage mvp_multivalue_args
+
 =head1 SEE ALSO
 
 This module was indirectly inspired by
 L<Module::Install::External's requires_external_bin|Module::Install::External/requires_external_bin>
 command.
+
+=head1 SUPPORT
+
+=head2 Perldoc
+
+You can find documentation for this module with the perldoc command.
+
+  perldoc Dist::Zilla::Plugin::RequiresExternal
+
+=head2 Websites
+
+The following websites have more information about this module, and may be of help to you. As always,
+in addition to those websites please use your favorite search engine to discover more resources.
+
+=over 4
+
+=item *
+
+Search CPAN
+
+The default CPAN search engine, useful to view POD in HTML format.
+
+L<http://search.cpan.org/dist/Dist-Zilla-Plugin-RequiresExternal>
+
+=item *
+
+AnnoCPAN
+
+The AnnoCPAN is a website that allows community annonations of Perl module documentation.
+
+L<http://annocpan.org/dist/Dist-Zilla-Plugin-RequiresExternal>
+
+=item *
+
+CPAN Ratings
+
+The CPAN Ratings is a website that allows community ratings and reviews of Perl modules.
+
+L<http://cpanratings.perl.org/d/Dist-Zilla-Plugin-RequiresExternal>
+
+=item *
+
+CPANTS
+
+The CPANTS is a website that analyzes the Kwalitee ( code metrics ) of a distribution.
+
+L<http://cpants.perl.org/dist/overview/Dist-Zilla-Plugin-RequiresExternal>
+
+=item *
+
+CPAN Testers
+
+The CPAN Testers is a network of smokers who run automated tests on uploaded CPAN distributions.
+
+L<http://www.cpantesters.org/distro/D/Dist-Zilla-Plugin-RequiresExternal>
+
+=item *
+
+CPAN Testers Matrix
+
+The CPAN Testers Matrix is a website that provides a visual way to determine what Perls/platforms PASSed for a distribution.
+
+L<http://matrix.cpantesters.org/?dist=Dist-Zilla-Plugin-RequiresExternal>
+
+=item *
+
+CPAN Testers Dependencies
+
+The CPAN Testers Dependencies is a website that shows a chart of the test results of all dependencies for a distribution.
+
+L<http://deps.cpantesters.org/?module=Dist::Zilla::Plugin::RequiresExternal>
+
+=back
+
+=head2 Bugs / Feature Requests
+
+Please report any bugs or feature requests through the web
+interface at L<https://github.com/mjgardner/Dist-Zilla-Plugin-RequiresExternal/issues>. You will be automatically notified of any
+progress on the request by the system.
+
+=head2 Source Code
+
+The code is open to the world, and available for you to hack on. Please feel free to browse it and play
+with it, or whatever. If you want to contribute patches, please send me a diff or prod me to pull
+from your repository :)
+
+L<https://github.com/mjgardner/Dist-Zilla-Plugin-RequiresExternal>
+
+  git clone git://github.com/mjgardner/Dist-Zilla-Plugin-RequiresExternal.git
+
+=head1 AUTHOR
+
+Mark Gardner <mjgardner@cpan.org>
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2011 by GSI Commerce.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
