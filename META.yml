@@ -11,11 +11,11 @@ build_requires:
   Test::DZil: 0
   Test::More: 0.94
   Test::Most: 0
-  perl: 5.004
+  perl: 5.006
 configure_requires:
   ExtUtils::MakeMaker: 6.30
 dynamic_config: 0
-generated_by: 'Dist::Zilla version 4.200006, CPAN::Meta::Converter version 2.110930'
+generated_by: 'Dist::Zilla version 4.200007, CPAN::Meta::Converter version 2.110930'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -43,4 +43,4 @@ resources:
   bugtracker: https://github.com/mjgardner/Dist-Zilla-Plugin-RequiresExternal/issues
   homepage: http://search.cpan.org/dist/Dist-Zilla-Plugin-RequiresExternal/
   repository: git://github.com/mjgardner/Dist-Zilla-Plugin-RequiresExternal.git
-version: 1.001
+version: 1.002

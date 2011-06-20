@@ -12,7 +12,7 @@ use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 package Dist::Zilla::Plugin::RequiresExternal;
 
 BEGIN {
-    $Dist::Zilla::Plugin::RequiresExternal::VERSION = '1.001';
+    $Dist::Zilla::Plugin::RequiresExternal::VERSION = '1.002';
 }
 
 # ABSTRACT: make dists require external commands
@@ -110,7 +110,7 @@ Dist::Zilla::Plugin::RequiresExternal - make dists require external commands
 
 =head1 VERSION
 
-version 1.001
+version 1.002
 
 =head1 SYNOPSIS
 

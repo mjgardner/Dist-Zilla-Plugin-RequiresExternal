@@ -4,7 +4,7 @@
       "Mark Gardner <mjgardner@cpan.org>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.200006, CPAN::Meta::Converter version 2.110930",
+   "generated_by" : "Dist::Zilla version 4.200007, CPAN::Meta::Converter version 2.110930",
    "license" : [
       "perl_5"
    ],
@@ -50,7 +50,7 @@
             "Test::DZil" : 0,
             "Test::More" : "0.94",
             "Test::Most" : 0,
-            "perl" : "5.004"
+            "perl" : "5.006"
          }
       }
    },
@@ -66,6 +66,6 @@
          "web" : "https://github.com/mjgardner/Dist-Zilla-Plugin-RequiresExternal"
       }
    },
-   "version" : "1.001"
+   "version" : "1.002"
 }
 
