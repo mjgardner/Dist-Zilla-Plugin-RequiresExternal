@@ -72,8 +72,8 @@ END_TEMPLATE
             ),
             content => $self->fill_in_string(
                 $template, { fatal => $self->fatal, requires => \@requires },
-            )
-        )
+            ),
+        ),
     );
     return;
 }
