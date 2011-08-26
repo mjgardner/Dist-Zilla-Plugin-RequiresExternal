@@ -1,5 +1,6 @@
-1.002     2011-08-26 14:09:44 America/New_York
-
+1.002     2011-08-26 14:20:09 America/New_York
+    Allow attributes to be undef.
+    Reorganize code so Dist::Zilla and Pod::Weaver don't scramble it too badly.
 1.001     2011-05-23 12:25:26 America/New_York
     Update POD and copyright.  No code changes.
 1.000     2011-02-18 13:39:38 America/New_York
