@@ -1,4 +1,7 @@
 {{$NEXT}}
+    Changes to dist.ini to set MetaCPAN home page and automatically test
+    against a selection of brewed perls.
+1.002     2011-08-26 14:22:56 America/New_York
     Allow attributes to be undef.
     Reorganize code so Dist::Zilla and Pod::Weaver don't scramble it too badly.
 1.001     2011-05-23 12:25:26 America/New_York
