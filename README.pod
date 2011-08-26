@@ -63,6 +63,9 @@ Using this plugin will add L<Test::Most|Test::Most> and L<Env::Path|Env::Path>
 to your distribution's testing prerequisites since the generated script uses
 those modules.
 
+=for test_synopsis 1;
+__END__
+
 =head1 SEE ALSO
 
 This module was indirectly inspired by

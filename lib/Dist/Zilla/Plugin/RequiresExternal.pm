@@ -90,6 +90,10 @@ no Moose;
 This L<Dist::Zilla|Dist::Zilla> plugin creates a test in your distribution
 to check for the existence of executable commands you require.
 
+=for test_synopsis
+1;
+__END__
+
 =head1 SYNOPSIS
 
 In your F<dist.ini>:
