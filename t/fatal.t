@@ -1,5 +1,6 @@
 #!perl
 
+use Modern::Perl;
 use English '-no_match_vars';
 use Test::Most tests => 3;
 use Test::DZil;

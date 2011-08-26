@@ -63,13 +63,13 @@ Using this plugin will add L<Test::Most|Test::Most> and L<Env::Path|Env::Path>
 to your distribution's testing prerequisites since the generated script uses
 those modules.
 
-=for Pod::Coverage mvp_multivalue_args
-
 =head1 SEE ALSO
 
 This module was indirectly inspired by
 L<Module::Install::External's requires_external_bin|Module::Install::External/requires_external_bin>
 command.
+
+=for Pod::Coverage mvp_multivalue_args
 
 =head1 SUPPORT
 
