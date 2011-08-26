@@ -33,7 +33,7 @@ with qw(
 
 sub mvp_multivalue_args { return 'requires' }
 
-has _requires => ( ro, lazy, auto_deref,
+has _requires => ( ro, lazy,
     isa => Maybe [ ArrayRef [Str] ],
     init_arg => 'requires',
     default  => sub { [] },
@@ -43,7 +43,7 @@ has fatal => ( ro, required, isa => Maybe [Bool], default => 0 );
 
 sub gather_files {
     my $self     = shift;
-    my @requires = part { file($ARG)->is_absolute() } $self->_requires;
+    my @requires = part { file($ARG)->is_absolute() } @{ $self->_requires };
     my $template = <<'END_TEMPLATE';
 #!perl
 
