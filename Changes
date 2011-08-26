@@ -1,4 +1,4 @@
-1.002     2011-08-26 14:20:09 America/New_York
+1.002     2011-08-26 14:22:56 America/New_York
     Allow attributes to be undef.
     Reorganize code so Dist::Zilla and Pod::Weaver don't scramble it too badly.
 1.001     2011-05-23 12:25:26 America/New_York
