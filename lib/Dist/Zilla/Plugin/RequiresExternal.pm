@@ -1,9 +1,10 @@
 package Dist::Zilla::Plugin::RequiresExternal;
 
-our $VERSION = '1.002';    # VERSION
-
 use utf8;
 use Modern::Perl;
+
+our $VERSION = '1.002';    # VERSION
+
 use English '-no_match_vars';
 use Moose;
 use MooseX::Types::Moose qw(ArrayRef Bool Maybe Str);
