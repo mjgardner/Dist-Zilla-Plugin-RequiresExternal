@@ -43,6 +43,6 @@ requires:
   utf8: 0
 resources:
   bugtracker: https://github.com/mjgardner/Dist-Zilla-Plugin-RequiresExternal/issues
-  homepage: http://search.cpan.org/dist/Dist-Zilla-Plugin-RequiresExternal/
+  homepage: http://metacpan.org/release/Dist-Zilla-Plugin-RequiresExternal/
   repository: git://github.com/mjgardner/Dist-Zilla-Plugin-RequiresExternal.git
-version: 1.003
+version: 1.004
