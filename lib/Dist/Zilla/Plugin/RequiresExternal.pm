@@ -10,8 +10,7 @@ use utf8;
 use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
 
 package Dist::Zilla::Plugin::RequiresExternal;
-
-BEGIN {
+{
     $Dist::Zilla::Plugin::RequiresExternal::VERSION = '1.002';
 }
 
