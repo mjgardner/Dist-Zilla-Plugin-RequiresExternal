@@ -3,7 +3,7 @@ package Dist::Zilla::Plugin::RequiresExternal;
 use utf8;
 use Modern::Perl;
 
-our $VERSION = '1.002';    # VERSION
+our $VERSION = '1.003';    # VERSION
 
 use English '-no_match_vars';
 use Moose;
@@ -100,7 +100,7 @@ Dist::Zilla::Plugin::RequiresExternal - make dists require external commands
 
 =head1 VERSION
 
-version 1.002
+version 1.003
 
 =head1 SYNOPSIS
 
