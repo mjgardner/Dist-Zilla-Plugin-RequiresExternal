@@ -18,7 +18,7 @@ package Dist::Zilla::Plugin::RequiresExternal;
 
 use English '-no_match_vars';
 use Moose;
-use MooseX::Types::Moose qw(ArrayRef Bool Str);
+use MooseX::Types::Moose qw(ArrayRef Bool Maybe Str);
 use MooseX::Has::Sugar;
 use Dist::Zilla::File::InMemory;
 use List::MoreUtils 'part';
@@ -34,12 +34,12 @@ with qw(
 sub mvp_multivalue_args { return 'requires' }
 
 has _requires => ( ro, lazy, auto_deref,
-    isa => ArrayRef [Str],
+    isa => Maybe [ ArrayRef [Str] ],
     init_arg => 'requires',
     default  => sub { [] },
 );
 
-has fatal => ( ro, required, isa => Bool, default => 0 );
+has fatal => ( ro, required, isa => Maybe [Bool], default => 0 );
 
 sub gather_files {
     my $self     = shift;
