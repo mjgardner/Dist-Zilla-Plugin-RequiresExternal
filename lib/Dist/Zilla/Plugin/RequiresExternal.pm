@@ -1,21 +1,9 @@
-#
-# This file is part of Dist-Zilla-Plugin-RequiresExternal
-#
-# This software is copyright (c) 2011 by GSI Commerce.
-#
-# This is free software; you can redistribute it and/or modify it under
-# the same terms as the Perl 5 programming language system itself.
-#
-use utf8;
-use Modern::Perl;    ## no critic (UselessNoCritic,RequireExplicitPackage)
-
 package Dist::Zilla::Plugin::RequiresExternal;
-{
-    $Dist::Zilla::Plugin::RequiresExternal::VERSION = '1.002';
-}
 
-# ABSTRACT: make dists require external commands
+our $VERSION = '1.002';    # VERSION
 
+use utf8;
+use Modern::Perl;
 use English '-no_match_vars';
 use Moose;
 use MooseX::Types::Moose qw(ArrayRef Bool Maybe Str);
@@ -94,6 +82,8 @@ __PACKAGE__->meta->make_immutable();
 no Moose;
 1;
 
+# ABSTRACT: make dists require external commands
+
 __END__
 
 =pod
@@ -161,13 +151,13 @@ Using this plugin will add L<Test::Most|Test::Most> and L<Env::Path|Env::Path>
 to your distribution's testing prerequisites since the generated script uses
 those modules.
 
-=for Pod::Coverage mvp_multivalue_args
-
 =head1 SEE ALSO
 
 This module was indirectly inspired by
 L<Module::Install::External's requires_external_bin|Module::Install::External/requires_external_bin>
 command.
+
+=for Pod::Coverage mvp_multivalue_args
 
 =head1 SUPPORT
 
