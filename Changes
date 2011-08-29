@@ -1,5 +1,6 @@
-1.004     2011-08-28 22:38:32 America/New_York
-
+1.004     2011-08-28 22:41:13 America/New_York
+    Hopefully fix a longstanding testing bug where some smokers didn't have
+    perl in their PATHs.
 1.003     2011-08-26 14:39:08 America/New_York
     Changes to dist.ini to set MetaCPAN home page and automatically test
     against a selection of brewed perls.
