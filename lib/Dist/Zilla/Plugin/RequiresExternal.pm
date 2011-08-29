@@ -31,7 +31,10 @@ has _requires => ( ro, lazy,
 has fatal => ( ro, required, isa => Maybe [Bool], default => 0 );
 
 sub gather_files {
-    my $self     = shift;
+    my $self = shift;
+
+    # @{$requires[0]} will contain any non-absolute paths to look for in $PATH
+    # @{$requires[1]} will contain any absolute paths
     my @requires = part { file($ARG)->is_absolute() } @{ $self->_requires };
     my $template = <<'END_TEMPLATE';
 #!perl

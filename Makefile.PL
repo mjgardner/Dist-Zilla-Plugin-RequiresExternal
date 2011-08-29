@@ -14,6 +14,7 @@ my %WriteMakefileArgs = (
   "BUILD_REQUIRES" => {
     "Carp" => 0,
     "Config" => 0,
+    "Env::Path" => 0,
     "File::Find" => 0,
     "File::Temp" => 0,
     "Scalar::Util" => 0,
