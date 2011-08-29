@@ -1,4 +1,4 @@
-1.004     2011-08-28 23:20:34 America/New_York
+1.004     2011-08-28 23:35:54 America/New_York
     Hopefully fix a longstanding testing bug where some smokers didn't have
     perl in their PATHs.
 1.003     2011-08-26 14:39:08 America/New_York
