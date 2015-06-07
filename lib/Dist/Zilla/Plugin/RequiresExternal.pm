@@ -91,6 +91,9 @@ __END__
 
 =pod
 
+=for test_synopsis
+BEGIN { die "SKIP: this is ini, not perl\n"; }
+
 =head1 SYNOPSIS
 
 In your F<dist.ini>:
