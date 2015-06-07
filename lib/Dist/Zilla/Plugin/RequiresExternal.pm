@@ -1,7 +1,7 @@
 package Dist::Zilla::Plugin::RequiresExternal;
 
 use utf8;
-use Modern::Perl;
+use Modern::Perl '2010';    ## no critic (Modules::ProhibitUseQuotedVersion)
 
 # VERSION
 use English '-no_match_vars';
@@ -45,7 +45,7 @@ plan tests => {{
     $OUT += @{ $requires[1] } if defined $requires[1];
 }};
 bail_on_fail if {{ $fatal }};
-use Env::Path 'PATH';
+use Env::Path 0.18 'PATH';
 
 {{ "ok(scalar PATH->Whence(\$_), \"\$_ in PATH\") for qw(@{ $requires[0] });"
         if defined $requires[0]; }}
@@ -74,7 +74,7 @@ sub metadata {
             test => {
                 requires => {
                     'Test::Most' => '0',
-                    'Env::Path'  => '0',
+                    'Env::Path'  => '0.18',
                 },
             },
         },
