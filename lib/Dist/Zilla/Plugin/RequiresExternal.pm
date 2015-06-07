@@ -1,9 +1,36 @@
 package Dist::Zilla::Plugin::RequiresExternal;
 
-use utf8;
+# ABSTRACT: make dists require external commands
+
 use Modern::Perl '2010';    ## no critic (Modules::ProhibitUseQuotedVersion)
 
 # VERSION
+use utf8;
+
+=for test_synopsis
+BEGIN { die "SKIP: this is ini, not perl\n"; }
+
+=head1 SYNOPSIS
+
+In your F<dist.ini>:
+
+    [RequiresExternal]
+    requires = /path/to/some/executable
+    requires = executable_in_path
+
+=head1 DESCRIPTION
+
+This L<Dist::Zilla|Dist::Zilla> plugin creates a test in your distribution
+to check for the existence of executable commands you require.
+
+=head1 SEE ALSO
+
+This module was indirectly inspired by
+L<Module::Install::External's requires_external_bin|Module::Install::External/requires_external_bin>
+command.
+
+=cut
+
 use English '-no_match_vars';
 use Moose;
 use MooseX::Types::Moose qw(ArrayRef Bool Maybe Str);
@@ -19,7 +46,28 @@ with qw(
     Dist::Zilla::Role::TextTemplate
 );
 
+=for Pod::Coverage mvp_multivalue_args
+
+=cut
+
 sub mvp_multivalue_args { return 'requires' }
+
+=attr requires
+
+Each C<requires> attribute should be either an absolute path to an executable
+or the name of a command in the user's C<PATH> environment.  Multiple
+C<requires> lines are allowed.
+
+Example from a F<dist.ini> file:
+
+    [RequiresExternal]
+    requires = sqlplus
+    requires = /usr/bin/java
+
+This will require the program C<sqlplus> to be available somewhere in the
+user's C<PATH> and the program C<java> specifically in F</usr/bin>.
+
+=cut
 
 has _requires => ( ro, lazy,
     isa => Maybe [ ArrayRef [Str] ],
@@ -27,7 +75,23 @@ has _requires => ( ro, lazy,
     default  => sub { [] },
 );
 
+=attr fatal
+
+Boolean value to determine if a failed test will immediately stop testing.
+It also causes the test name to change to F<t/000-requires_external.t> so that
+it runs earlier.
+Defaults to false.
+
+=cut
+
 has fatal => ( ro, required, isa => Maybe [Bool], default => 0 );
+
+=method gather_files
+
+Adds a F<t/requires_external.t> test script to your distribution that checks
+if each L</requires> item is executable.
+
+=cut
 
 sub gather_files {
     my $self = shift;
@@ -68,6 +132,14 @@ END_TEMPLATE
     return;
 }
 
+=method metadata
+
+Using this plugin will add L<Test::Most|Test::Most> and L<Env::Path|Env::Path>
+to your distribution's testing prerequisites since the generated script uses
+those modules.
+
+=cut
+
 sub metadata {
     return {
         prereqs => {
@@ -85,65 +157,3 @@ __PACKAGE__->meta->make_immutable();
 no Moose;
 1;
 
-# ABSTRACT: make dists require external commands
-
-__END__
-
-=pod
-
-=for test_synopsis
-BEGIN { die "SKIP: this is ini, not perl\n"; }
-
-=head1 SYNOPSIS
-
-In your F<dist.ini>:
-
-    [RequiresExternal]
-    requires = /path/to/some/executable
-    requires = executable_in_path
-
-=head1 DESCRIPTION
-
-This L<Dist::Zilla|Dist::Zilla> plugin creates a test in your distribution
-to check for the existence of executable commands you require.
-
-=attr requires
-
-Each C<requires> attribute should be either an absolute path to an executable
-or the name of a command in the user's C<PATH> environment.  Multiple
-C<requires> lines are allowed.
-
-Example from a F<dist.ini> file:
-
-    [RequiresExternal]
-    requires = sqlplus
-    requires = /usr/bin/java
-
-This will require the program C<sqlplus> to be available somewhere in the
-user's C<PATH> and the program C<java> specifically in F</usr/bin>.
-
-=attr fatal
-
-Boolean value to determine if a failed test will immediately stop testing.
-It also causes the test name to change to F<t/000-requires_external.t> so that
-it runs earlier.
-Defaults to false.
-
-=method gather_files
-
-Adds a F<t/requires_external.t> test script to your distribution that checks
-if each L</requires> item is executable.
-
-=method metadata
-
-Using this plugin will add L<Test::Most|Test::Most> and L<Env::Path|Env::Path>
-to your distribution's testing prerequisites since the generated script uses
-those modules.
-
-=head1 SEE ALSO
-
-This module was indirectly inspired by
-L<Module::Install::External's requires_external_bin|Module::Install::External/requires_external_bin>
-command.
-
-=for Pod::Coverage mvp_multivalue_args
