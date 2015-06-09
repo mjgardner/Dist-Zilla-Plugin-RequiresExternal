@@ -34,7 +34,7 @@ command.
 use English '-no_match_vars';
 use Moose;
 use MooseX::Types::Moose qw(ArrayRef Bool Maybe Str);
-use MooseX::Has::Sugar;
+use MooseX::AttributeShortcuts;
 use Dist::Zilla::File::InMemory;
 use List::MoreUtils 'part';
 use Path::Class;
@@ -69,10 +69,11 @@ user's C<PATH> and the program C<java> specifically in F</usr/bin>.
 
 =cut
 
-has _requires => ( ro, lazy,
-    isa => Maybe [ ArrayRef [Str] ],
+has _requires => (
+    is       => 'lazy',
+    isa      => Maybe [ ArrayRef [Str] ],
     init_arg => 'requires',
-    default  => sub { [] },
+    default => sub { [] },
 );
 
 =attr fatal
@@ -84,7 +85,7 @@ Defaults to false.
 
 =cut
 
-has fatal => ( ro, required, isa => Maybe [Bool], default => 0 );
+has fatal => ( is => 'ro', required => 1, isa => Maybe [Bool], default => 0 );
 
 =method gather_files
 
