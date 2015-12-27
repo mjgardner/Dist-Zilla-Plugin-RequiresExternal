@@ -1,4 +1,4 @@
-#!perl
+#!/usr/bin/env perl
 
 use Modern::Perl '2010';    ## no critic (Modules::ProhibitUseQuotedVersion)
 use English '-no_match_vars';

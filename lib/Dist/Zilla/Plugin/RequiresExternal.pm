@@ -101,7 +101,7 @@ sub gather_files {
     # @{$requires[1]} will contain any absolute paths
     my @requires = part { file($ARG)->is_absolute() } @{ $self->_requires };
     my $template = <<'END_TEMPLATE';
-#!perl
+#!/usr/bin/env perl
 
 use Test::Most;
 plan tests => {{

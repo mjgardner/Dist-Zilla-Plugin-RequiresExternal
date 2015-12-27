@@ -1,4 +1,4 @@
-#!perl
+#!/usr/bin/env perl
 
 BEGIN {
     if ( not $ENV{RELEASE_TESTING} ) {
