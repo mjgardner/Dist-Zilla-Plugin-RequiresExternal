@@ -31,7 +31,6 @@ command.
 
 =cut
 
-use English '-no_match_vars';
 use Moose;
 use MooseX::Types::Moose qw(ArrayRef Bool Maybe Str);
 use MooseX::AttributeShortcuts;
@@ -99,7 +98,7 @@ sub gather_files {
 
     # @{$requires[0]} will contain any non-absolute paths to look for in $PATH
     # @{$requires[1]} will contain any absolute paths
-    my @requires = part { file($ARG)->is_absolute() } @{ $self->_requires };
+    my @requires = part { file($_)->is_absolute() } @{ $self->_requires };
     my $template = <<'END_TEMPLATE';
 #!/usr/bin/env perl
 
@@ -123,7 +122,7 @@ END_TEMPLATE
             name => (
                 $self->fatal
                 ? 't/000-requires_external.t'
-                : 't/requires_external.t'
+                : 't/requires_external.t',
             ),
             content => $self->fill_in_string(
                 $template, { fatal => $self->fatal, requires => \@requires },
@@ -145,10 +144,7 @@ sub metadata {
     return {
         prereqs => {
             test => {
-                requires => {
-                    'Test::Most' => '0',
-                    'Env::Path'  => '0.18',
-                },
+                requires => { 'Test::Most' => '0', 'Env::Path' => '0.18' },
             },
         },
     };

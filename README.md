@@ -4,7 +4,7 @@ Dist::Zilla::Plugin::RequiresExternal - make dists require external commands
 
 # VERSION
 
-version 1.005
+version 1.006
 
 # SYNOPSIS
 
@@ -135,7 +135,7 @@ from your repository :)
 
 # AUTHOR
 
-Mark Gardner <mjgardner@cpan.org>
+Mark Gardner &lt;mjgardner@cpan.org>
 
 # COPYRIGHT AND LICENSE
 
