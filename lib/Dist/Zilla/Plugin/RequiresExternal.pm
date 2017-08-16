@@ -20,8 +20,9 @@ In your F<dist.ini>:
 
 =head1 DESCRIPTION
 
-This L<Dist::Zilla|Dist::Zilla> plugin creates a test in your distribution
-to check for the existence of executable commands you require.
+This L<Dist::Zilla|Dist::Zilla> plugin creates a test
+in your distribution to check for the existence of executable commands
+you require.
 
 =head1 SEE ALSO
 
@@ -53,9 +54,9 @@ sub mvp_multivalue_args { return 'requires' }
 
 =attr requires
 
-Each C<requires> attribute should be either an absolute path to an executable
-or the name of a command in the user's C<PATH> environment.  Multiple
-C<requires> lines are allowed.
+Each C<requires> attribute should be either an absolute path to an
+executable or the name of a command in the user's C<PATH> environment.
+Multiple C<requires> lines are allowed.
 
 Example from a F<dist.ini> file:
 
@@ -63,8 +64,8 @@ Example from a F<dist.ini> file:
     requires = sqlplus
     requires = /usr/bin/java
 
-This will require the program C<sqlplus> to be available somewhere in the
-user's C<PATH> and the program C<java> specifically in F</usr/bin>.
+This will require the program C<sqlplus> to be available somewhere in
+the user's C<PATH> and the program C<java> specifically in F</usr/bin>.
 
 =cut
 
@@ -77,9 +78,9 @@ has _requires => (
 
 =attr fatal
 
-Boolean value to determine if a failed test will immediately stop testing.
-It also causes the test name to change to F<t/000-requires_external.t> so that
-it runs earlier.
+Boolean value to determine if a failed test will immediately stop
+testing. It also causes the test name to change to
+F<t/000-requires_external.t> so that it runs earlier.
 Defaults to false.
 
 =cut
@@ -88,8 +89,8 @@ has fatal => ( is => 'ro', required => 1, isa => Maybe [Bool], default => 0 );
 
 =method gather_files
 
-Adds a F<t/requires_external.t> test script to your distribution that checks
-if each L</requires> item is executable.
+Adds a F<t/requires_external.t> test script to your distribution that
+checks if each L</requires> item is executable.
 
 =cut
 
@@ -134,9 +135,9 @@ END_TEMPLATE
 
 =method metadata
 
-Using this plugin will add L<Test::Most|Test::Most> and L<Env::Path|Env::Path>
-to your distribution's testing prerequisites since the generated script uses
-those modules.
+Using this plugin will add L<Test::Most|Test::Most>
+and L<Env::Path|Env::Path> to your distribution's
+testing prerequisites since the generated script uses those modules.
 
 =cut
 

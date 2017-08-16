@@ -16,16 +16,17 @@ In your `dist.ini`:
 
 # DESCRIPTION
 
-This [Dist::Zilla](https://metacpan.org/pod/Dist::Zilla) plugin creates a test in your distribution
-to check for the existence of executable commands you require.
+This [Dist::Zilla](https://metacpan.org/pod/Dist::Zilla) plugin creates a test
+in your distribution to check for the existence of executable commands
+you require.
 
 # ATTRIBUTES
 
 ## requires
 
-Each `requires` attribute should be either an absolute path to an executable
-or the name of a command in the user's `PATH` environment.  Multiple
-`requires` lines are allowed.
+Each `requires` attribute should be either an absolute path to an
+executable or the name of a command in the user's `PATH` environment.
+Multiple `requires` lines are allowed.
 
 Example from a `dist.ini` file:
 
@@ -33,28 +34,28 @@ Example from a `dist.ini` file:
     requires = sqlplus
     requires = /usr/bin/java
 
-This will require the program `sqlplus` to be available somewhere in the
-user's `PATH` and the program `java` specifically in `/usr/bin`.
+This will require the program `sqlplus` to be available somewhere in
+the user's `PATH` and the program `java` specifically in `/usr/bin`.
 
 ## fatal
 
-Boolean value to determine if a failed test will immediately stop testing.
-It also causes the test name to change to `t/000-requires_external.t` so that
-it runs earlier.
+Boolean value to determine if a failed test will immediately stop
+testing. It also causes the test name to change to
+`t/000-requires_external.t` so that it runs earlier.
 Defaults to false.
 
 # METHODS
 
 ## gather\_files
 
-Adds a `t/requires_external.t` test script to your distribution that checks
-if each ["requires"](#requires) item is executable.
+Adds a `t/requires_external.t` test script to your distribution that
+checks if each ["requires"](#requires) item is executable.
 
 ## metadata
 
-Using this plugin will add [Test::Most](https://metacpan.org/pod/Test::Most) and [Env::Path](https://metacpan.org/pod/Env::Path)
-to your distribution's testing prerequisites since the generated script uses
-those modules.
+Using this plugin will add [Test::Most](https://metacpan.org/pod/Test::Most)
+and [Env::Path](https://metacpan.org/pod/Env::Path) to your distribution's
+testing prerequisites since the generated script uses those modules.
 
 # SEE ALSO
 

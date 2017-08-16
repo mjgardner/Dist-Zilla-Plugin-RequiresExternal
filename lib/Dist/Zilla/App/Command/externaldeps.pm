@@ -21,7 +21,8 @@ On the command line:
 =head1 DESCRIPTION
 
 This is a command plugin for L<Dist::Zilla|Dist::Zilla>. It provides the
-C<externaldeps> command, which prints external prerequisites declared with
+C<externaldeps> command, which prints external prerequisites declared
+with
 L<Dist::Zilla::Plugin::RequiresExternal|Dist::Zilla::Plugin::RequiresExternal>.
 
 =cut
