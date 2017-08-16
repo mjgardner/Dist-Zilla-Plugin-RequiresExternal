@@ -4,7 +4,7 @@ Dist::Zilla::Plugin::RequiresExternal - make dists require external commands
 
 # VERSION
 
-version 1.006
+version 1.007
 
 # SYNOPSIS
 
@@ -133,13 +133,14 @@ from your repository :)
 
     git clone git://github.com/mjgardner/Dist-Zilla-Plugin-RequiresExternal.git
 
-# AUTHOR
+# AUTHORS
 
-Mark Gardner &lt;mjgardner@cpan.org>
+- Mark Gardner <mjgardner@cpan.org>
+- Joenio Costa <joenio@joenio.me>
 
 # COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2015 by GSI Commerce.
+This software is copyright (c) 2017 by GSI Commerce and Joenio Costa.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.

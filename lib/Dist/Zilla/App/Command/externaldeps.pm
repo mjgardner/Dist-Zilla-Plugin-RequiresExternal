@@ -1,52 +1,45 @@
-package Dist::Zilla::App::Command::externaldeps;
-use strict;
-use warnings;
-use Dist::Zilla::App -command;
+package Dist::Zilla::App::Command::externaldeps; ## no critic (Capitalization)
 
 # ABSTRACT: print external libraries and binaries prerequisites
 
+use Modern::Perl '2010';    ## no critic (Modules::ProhibitUseQuotedVersion)
+
 # VERSION
+use utf8;
 
-sub abstract { 'print external libraries and binaries prerequisites' }
+=for test_synopsis
+BEGIN { die "SKIP: this is command line, not perl\n" }
 
-sub opt_spec {}
+=head1 SYNOPSIS
 
-sub execute {
-    my ($self, $opt, $args) = @_;
-    my $plugin = $self->zilla->plugin_named('RequiresExternal');
-    local $" = "\n";
-    print "@{ $plugin->_requires }\n";
-}
+On the command line:
 
-1;
-
-__END__
-
-=pod
-
-=head1 NAME
-
-Dist::Zilla::App::Command::externaldeps - print external libraries and binaries prerequisites
-
-=head1 VERSION
-
-version 0.01
+    % dzil externaldeps
+    man
+    sqlite3
 
 =head1 DESCRIPTION
 
-This is a command plugin for L<Dist::Zilla>. It provides the C<externaldeps>
-command, which prints external prerequisites declared with
-L<Dist::Zilla::Plugin::RequiresExternal>.
-
-=head1 AUTHOR
-
-Joenio Costa <joenio@joenio.me>
-
-=head1 COPYRIGHT AND LICENSE
-
-This software is copyright (c) 2016 by Joenio Costa.
-
-This is free software; you can redistribute it and/or modify it under
-the same terms as the Perl 5 programming language system itself.
+This is a command plugin for L<Dist::Zilla|Dist::Zilla>. It provides the
+C<externaldeps> command, which prints external prerequisites declared with
+L<Dist::Zilla::Plugin::RequiresExternal|Dist::Zilla::Plugin::RequiresExternal>.
 
 =cut
+
+use Dist::Zilla::App -command;    ## no critic (ProhibitCallsToUndeclaredSubs)
+use English '-no_match_vars';
+
+sub opt_spec { }
+
+sub execute {
+    my $self   = shift;
+    my $plugin = $self->zilla->plugin_named('RequiresExternal');
+    local $LIST_SEPARATOR = "\n";
+    say "@{ $plugin->_requires }";
+    return;
+}
+
+## no critic (NamingConventions::ProhibitAmbiguousNames)
+sub abstract { return 'print external libraries and binaries prerequisites' }
+
+1;

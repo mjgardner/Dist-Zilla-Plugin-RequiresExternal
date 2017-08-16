@@ -8,7 +8,7 @@ use Modern::Perl '2010';    ## no critic (Modules::ProhibitUseQuotedVersion)
 use utf8;
 
 =for test_synopsis
-BEGIN { die "SKIP: this is ini, not perl\n"; }
+BEGIN { die "SKIP: this is ini, not perl\n" }
 
 =head1 SYNOPSIS
 
