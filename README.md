@@ -4,7 +4,7 @@ Dist::Zilla::Plugin::RequiresExternal - make dists require external commands
 
 # VERSION
 
-version 1.007
+version 1.008
 
 # SYNOPSIS
 
