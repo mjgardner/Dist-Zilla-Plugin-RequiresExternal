@@ -1,6 +1,13 @@
 #!/usr/bin/env perl
 
 BEGIN {
+    unless ( $ENV{RELEASE_TESTING} ) {
+        print qq{1..0 # SKIP these tests are for release candidate testing\n};
+        exit;
+    }
+}
+
+BEGIN {
     if ( not $ENV{RELEASE_TESTING} ) {
         require Test::More;
         Test::More::plan(
