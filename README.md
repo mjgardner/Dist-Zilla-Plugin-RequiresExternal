@@ -4,7 +4,7 @@ Dist::Zilla::Plugin::RequiresExternal - make dists require external commands
 
 # VERSION
 
-version 1.008
+version 1.009
 
 # SYNOPSIS
 
@@ -16,7 +16,7 @@ In your `dist.ini`:
 
 # DESCRIPTION
 
-This [Dist::Zilla](https://metacpan.org/pod/Dist::Zilla) plugin creates a test
+This [Dist::Zilla](https://metacpan.org/pod/Dist%3A%3AZilla) plugin creates a test
 in your distribution to check for the existence of executable commands
 you require.
 
@@ -53,14 +53,14 @@ checks if each ["requires"](#requires) item is executable.
 
 ## metadata
 
-Using this plugin will add [Test::Most](https://metacpan.org/pod/Test::Most)
-and [Env::Path](https://metacpan.org/pod/Env::Path) to your distribution's
+Using this plugin will add [Test::Most](https://metacpan.org/pod/Test%3A%3AMost)
+and [Env::Path](https://metacpan.org/pod/Env%3A%3APath) to your distribution's
 testing prerequisites since the generated script uses those modules.
 
 # SEE ALSO
 
 This module was indirectly inspired by
-[Module::Install::External's requires\_external\_bin](https://metacpan.org/pod/Module::Install::External#requires_external_bin)
+[Module::Install::External's requires\_external\_bin](https://metacpan.org/pod/Module%3A%3AInstall%3A%3AExternal#requires_external_bin)
 command.
 
 # SUPPORT
@@ -76,24 +76,6 @@ You can find documentation for this module with the perldoc command.
 The following websites have more information about this module, and may be of help to you. As always,
 in addition to those websites please use your favorite search engine to discover more resources.
 
-- Search CPAN
-
-    The default CPAN search engine, useful to view POD in HTML format.
-
-    [http://search.cpan.org/dist/Dist-Zilla-Plugin-RequiresExternal](http://search.cpan.org/dist/Dist-Zilla-Plugin-RequiresExternal)
-
-- AnnoCPAN
-
-    The AnnoCPAN is a website that allows community annotations of Perl module documentation.
-
-    [http://annocpan.org/dist/Dist-Zilla-Plugin-RequiresExternal](http://annocpan.org/dist/Dist-Zilla-Plugin-RequiresExternal)
-
-- CPAN Ratings
-
-    The CPAN Ratings is a website that allows community ratings and reviews of Perl modules.
-
-    [http://cpanratings.perl.org/d/Dist-Zilla-Plugin-RequiresExternal](http://cpanratings.perl.org/d/Dist-Zilla-Plugin-RequiresExternal)
-
 - CPANTS
 
     The CPANTS is a website that analyzes the Kwalitee ( code metrics ) of a distribution.
@@ -102,7 +84,7 @@ in addition to those websites please use your favorite search engine to discover
 
 - CPAN Testers
 
-    The CPAN Testers is a network of smokers who run automated tests on uploaded CPAN distributions.
+    The CPAN Testers is a network of smoke testers who run automated tests on uploaded CPAN distributions.
 
     [http://www.cpantesters.org/distro/D/Dist-Zilla-Plugin-RequiresExternal](http://www.cpantesters.org/distro/D/Dist-Zilla-Plugin-RequiresExternal)
 
@@ -141,7 +123,7 @@ from your repository :)
 
 # COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2017 by GSI Commerce and Joenio Costa.
+This software is copyright (c) 2020 by GSI Commerce and Joenio Costa.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
